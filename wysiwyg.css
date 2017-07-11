@@ -2,3 +2,26 @@ img {
 	height: 200px;
 	width: 100px;
 }
+
+.cards:nth-of-type(2n+1) {
+	background-color: lightyellow;
+	
+}
+
+.cards:nth-of-type(2n) {
+	background-color: lightblue;
+}
+
+.cards {
+	border: solid black 2px;
+	height: 300px;
+	width: 50%;
+}
+
+#input:focus {
+	background-color: yellow;
+}
+
+.selectedCard {
+	border: dotted black 2px;
+}
