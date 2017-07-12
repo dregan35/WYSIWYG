@@ -9,7 +9,7 @@ let array = [];
 function setArray() {
     //set array to the parsed json so not to return the text json
     array = JSON.parse(this.responseText)
-    //called outputCards with array passed into it
+        //called outputCards with array passed into it
     outputCards(array);
 
 };
@@ -17,18 +17,18 @@ function setArray() {
 function outputCards(peopleArray) {
     //for loop to iterate over peopleArray
     for (var i = 0; i < peopleArray.length; i++) {
-        //sets container to display the json through concatnation from the string template literal
+        //sets container to display the json through concatenation from the string template literal
         container.innerHTML += `<div class="cards"> <person>
             <header>${peopleArray[i].name} & ${peopleArray[i].title}</header>
             <section><span class="bio">${peopleArray[i].bio}</span> & <img src="${peopleArray[i].image}"> </img></section>
             <footer>${peopleArray[i].lifespan.birth} & ${peopleArray[i].lifespan.death}</footer>
         </person></div>`;
-    }// called activateClickEvent
+    } // called activateClickEvent
     activateClickEvent();
 };
 // defined the function XHRFail to load 
 function XHRFail() {
-    //displays error in concsole if XHR fails
+    //displays error in console if XHR fails
     console.log(this.status, this.statusText);
 };
 //creates variable myReqeust XHR object
@@ -49,11 +49,11 @@ function activateClickEvent() {
         cards[i].addEventListener("click", function(e) {
             //called clearInputEvent
             clearInputEvent()
-            //called activateFocusEvent
+                //called activateFocusEvent
             activateFocusEvent()
-            //called deathCard
+                //called deathCard
             deathCard()
-            //called activateBorderEvent with e.currentTarget passed into it
+                //called activateBorderEvent with e.currentTarget passed into it
             activateBorderEvent(e.currentTarget)
         });
     }
@@ -68,14 +68,14 @@ function activateFocusEvent() {
 function activateBorderEvent(clickedCard) {
     //adds selectedCard class to clickedCard
     clickedCard.classList.add("selectedCard");
-    //called activatedKeyEvent with clickedCard pased into it
+    //called activatedKeyEvent with clickedCard passed into it
     activateKeyEvent(clickedCard)
 }
 // defined the function deathCard 
 function deathCard() {
     //for loop to iterate over cards
     for (var i = 0; i < cards.length; i++) {
-        // added condionial if each card contains the class "selectedCard"
+        // added conditional if each card contains the class "selectedCard"
         if (cards[i].classList.contains("selectedCard")) {
             //if true remove "selectedCard" from each card
             cards[i].classList.remove("selectedCard")
@@ -84,29 +84,29 @@ function deathCard() {
 }
 // defined the function  and expects clickedCard (from line 72 "clickedCard")
 function activateKeyEvent(clickedCard) {
-    //attached listner to input to listen for "keyup"
+    //attached listener to input to listen for "keyup"
     input.addEventListener("keyup", function(e) {
-        //condional if event keycode equals enter
+        //conditional if event key-code equals enter
         if (e.keyCode === 13) {
             //if true execute clearInputEvent
             clearInputEvent()
-        }else{
+        } else {
             //if false execute mirrorText with clickedCard passed into it
-        mirrorText(clickedCard);
+            mirrorText(clickedCard);
         }
     });
 }
 //defined the function mirrorText and expects clickedCard (from line 95 "clickedCard")
 function mirrorText(clickedCard) {
     console.log("input", input.value);
-    //added condional if clickedCard has the class "selectedCard"
+    //added conditional if clickedCard has the class "selectedCard"
     if (clickedCard.classList.contains("selectedCard")) {
-        //if true select the innerHTML of the element (in this case span) and make whats between the tags equavelant to what is typed in to the input
+        //if true select the innerHTML of the element (in this case span) and make whats between the tags equivalent to what is typed in to the input
         clickedCard.querySelector(".bio").innerHTML = input.value;
     }
 }
 // defined the function clearInpurt Event   
 function clearInputEvent() {
-   //input equals an empty string
-    input.value ="";
+    //input equals an empty string
+    input.value = "";
 }
